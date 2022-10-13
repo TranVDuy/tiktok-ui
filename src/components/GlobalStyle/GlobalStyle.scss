@@ -7,6 +7,7 @@
     // Default Layout
     --default-layout-header-height: 60px;
     --default-layout-header-width: 1150px;
+    --text-color: #333;
 }
 
 * {
@@ -26,4 +27,16 @@ body {
     font-size: 1.6rem;
     line-height: 1.5;
     text-rendering: optimizeSpeed;
+    color: var(--text-color);
 }
+
+button, input, [tabindex] {
+    outline: none;
+    border: none;
+}
+
+a[href]{
+    color: var(--text-color);
+    text-decoration: none;
+}
+ 

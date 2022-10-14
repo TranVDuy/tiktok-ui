@@ -23,7 +23,9 @@ function Header() {
                     <button className={cx('clear')}>
                         <FontAwesomeIcon icon={faCircleXmark} />
                     </button>
-                    <FontAwesomeIcon icon={faSpinner} />
+                    <div className={cx('loading')}>
+                        <FontAwesomeIcon icon={faSpinner} />
+                    </div>
                     <button className={cx('search-btn')}>
                         <FontAwesomeIcon icon={faMagnifyingGlass} />
                     </button>

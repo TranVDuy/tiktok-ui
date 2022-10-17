@@ -1,3 +1,5 @@
+import { useRef, useState } from 'react';
+
 import styles from './Header.module.scss'
 import classNames from 'classnames/bind';
 import images from '~/assets/images'
@@ -6,10 +8,34 @@ import images from '~/assets/images'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark, faSpinner, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
+// Tippy
+import Tippy from '@tippyjs/react/headless';
+
+// from Popper --> Wrapper
+import { Wrapper as PopperWrapper } from '~/components/Popper';
+import AccountItem from '~/components/AccountItem';
+import SearchValue from '../../SearchValue';
+
 const cx = classNames.bind(styles)
 
 function Header() {
-    console.log(images.src);
+    
+    const [searchResult, setSearchResult] = useState([])
+
+    const [searchValue, setSearchValue] = useState("")
+
+    const handleSearch = (e) => {
+        setSearchValue(e.target.value)
+        
+    }
+
+    const inputRef = useRef()
+
+    const handleClearValue = () => {
+        setSearchValue("")
+        inputRef.current.focus()
+    }
+
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
@@ -18,18 +44,47 @@ function Header() {
                     <img src={images.logo} alt="Logo Tiktok" />
                 </div>
                 {/* Search */}
-                <div className={cx('search')}>
-                    <input placeholder='Search accounts and videos' spellCheck={true} />
-                    <button className={cx('clear')}>
-                        <FontAwesomeIcon icon={faCircleXmark} />
-                    </button>
-                    <div className={cx('loading')}>
-                        <FontAwesomeIcon icon={faSpinner} />
+                <Tippy
+                    visible={searchValue !== ""}
+                    interactive={true}
+                    render={attrs => (
+                        <div className={cx('search-result')} tabIndex="-1" {...attrs}>
+                            <PopperWrapper>
+                                <SearchValue valueS={searchValue} />
+                                <SearchValue valueS={searchValue} />
+                                <SearchValue valueS={searchValue} />
+                              
+                                <h4 className={cx('search-title')}>
+                                    Account
+                                </h4>
+                                <AccountItem />
+                                <AccountItem />
+                                <AccountItem />
+                            </PopperWrapper>
+                        </div>
+                      )}
+                >
+                    <div className={cx('search')}>
+                        <input 
+                            ref={inputRef}
+                            value={searchValue} 
+                            onChange={(e) => handleSearch(e)} 
+                            placeholder='Search accounts and videos' 
+                            spellCheck={true} 
+                        />
+                        <button onClick={handleClearValue} className={cx('clear')}>
+                            <FontAwesomeIcon icon={faCircleXmark} />
+                        </button>
+                        <div className={cx('loading')}>
+                            <FontAwesomeIcon icon={faSpinner} />
+                        </div>
+                        
+                        <button className={cx('search-btn')}>
+                            <FontAwesomeIcon icon={faMagnifyingGlass} />
+                        </button>
+                        
                     </div>
-                    <button className={cx('search-btn')}>
-                        <FontAwesomeIcon icon={faMagnifyingGlass} />
-                    </button>
-                </div>
+                </Tippy>
                 {/* Action */}
                 <div className={cx('action')}>
 

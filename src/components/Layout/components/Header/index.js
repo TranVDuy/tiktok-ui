@@ -15,18 +15,19 @@ import Tippy from '@tippyjs/react/headless';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
 import SearchValue from '../../SearchValue';
+import Button from '~/components/Button';
 
 const cx = classNames.bind(styles)
 
 function Header() {
-    
+
     const [searchResult, setSearchResult] = useState([])
 
     const [searchValue, setSearchValue] = useState("")
 
     const handleSearch = (e) => {
         setSearchValue(e.target.value)
-        
+
     }
 
     const inputRef = useRef()
@@ -53,7 +54,7 @@ function Header() {
                                 <SearchValue valueS={searchValue} />
                                 <SearchValue valueS={searchValue} />
                                 <SearchValue valueS={searchValue} />
-                              
+
                                 <h4 className={cx('search-title')}>
                                     Account
                                 </h4>
@@ -62,15 +63,15 @@ function Header() {
                                 <AccountItem />
                             </PopperWrapper>
                         </div>
-                      )}
+                    )}
                 >
                     <div className={cx('search')}>
-                        <input 
+                        <input
                             ref={inputRef}
-                            value={searchValue} 
-                            onChange={(e) => handleSearch(e)} 
-                            placeholder='Search accounts and videos' 
-                            spellCheck={true} 
+                            value={searchValue}
+                            onChange={(e) => handleSearch(e)}
+                            placeholder='Search accounts and videos'
+                            spellCheck={true}
                         />
                         <button onClick={handleClearValue} className={cx('clear')}>
                             <FontAwesomeIcon icon={faCircleXmark} />
@@ -78,16 +79,17 @@ function Header() {
                         <div className={cx('loading')}>
                             <FontAwesomeIcon icon={faSpinner} />
                         </div>
-                        
+
                         <button className={cx('search-btn')}>
                             <FontAwesomeIcon icon={faMagnifyingGlass} />
                         </button>
-                        
+
                     </div>
                 </Tippy>
                 {/* Action */}
                 <div className={cx('action')}>
-
+                    <Button text >Upload</Button>
+                    <Button outline primary rounded onClick={()=>alert('LOLO')} >Log in</Button>
                 </div>
             </div>
         </header>

@@ -6,10 +6,11 @@ import images from '~/assets/images'
 
 // Font Awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark, faSpinner, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faCircleXmark, faSpinner, faMagnifyingGlass, faPlus, faEllipsisVertical} from '@fortawesome/free-solid-svg-icons';
 
 // Tippy
 import Tippy from '@tippyjs/react/headless';
+
 
 // from Popper --> Wrapper
 import { Wrapper as PopperWrapper } from '~/components/Popper';
@@ -88,8 +89,13 @@ function Header() {
                 </Tippy>
                 {/* Action */}
                 <div className={cx('action')}>
-                    <Button text >Upload</Button>
-                    <Button outline primary rounded onClick={()=>alert('LOLO')} >Log in</Button>
+                    <Button outline className={cx('custom-button-upload')} leftIcon={ <FontAwesomeIcon icon={faPlus} />} >Upload</Button>
+                    <Button primary onClick={()=>alert('LOLO')} >Log in</Button>
+                  
+                    <span className={cx('ellips-vertical')}>
+                        <FontAwesomeIcon icon={faEllipsisVertical} />
+                    </span>
+                  
                 </div>
             </div>
         </header>

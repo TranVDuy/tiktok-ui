@@ -5,6 +5,7 @@
 }
 
 .container{
+    width: var(--default-layout-header-horizontal-spacer);
     width: var(--default-layout-header-width);
     display: flex;
 }

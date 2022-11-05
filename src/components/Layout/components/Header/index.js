@@ -21,10 +21,28 @@ import Menu from '~/components/Popper/Menu/index';
 
 const cx = classNames.bind(styles)
 
+// Cai ni nay
 const MENU_ITEMS = [
     {
         icon: <FontAwesomeIcon icon={faLanguage} />,
         title: 'English',
+        children: {
+            title: 'Language',
+            data: [
+                {
+                    code: 'en',
+                    title: 'English'
+                },
+                {
+                    code: 'vi',
+                    title: 'Tiếng Việt'
+                },
+                {
+                    code: 'jp',
+                    title: 'Japanese'
+                }
+            ]
+        }
     },
     {
         icon: <FontAwesomeIcon icon={faQuestionCircle} />,
@@ -40,17 +58,17 @@ const MENU_ITEMS = [
 
 const dataAccount = [
     {
-        avatar: 'https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/f386fa2b374bf97bc9d6e77d9f5a9ad6~c5_100x100.jpeg?x-expires=1666926000&x-signature=5HczMD746wlRo%2FLp29H37ZHNylY%3D',
+        avatar: 'https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/f386fa2b374bf97bc9d6e77d9f5a9ad6~c5_300x300.webp?x-expires=1667311200&x-signature=oYjkusDzURdpbWq8DObZRulB9VQ%3D',
         nameaccount: 'khinaocopothidoiten.174',
         username: 'Duong My Phung'
     },
     {
-        avatar: 'https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/75a546a64d58998bc3d0367200ce9e2c.jpeg?x-expires=1666962000&x-signature=8Roy%2BqgRQez%2BoYAGzxMLbf1VYMw%3D',
+        avatar: 'https://p16-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/75a546a64d58998bc3d0367200ce9e2c~c5_300x300.webp?x-expires=1667311200&x-signature=VOqc%2Bo4bxXCHBnJ3VcJghdajHVs%3D',
         nameaccount: 'hyeepham',
         username: 'Hyee Phạm'
     },
     {
-        avatar: 'https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/d958c3c3d2fbb2eef593d7e13be8b474.jpeg?x-expires=1666926000&x-signature=yMq%2FpV2D8plzyKftTjQGhLGQPis%3D',
+        avatar: 'https://p16-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/d958c3c3d2fbb2eef593d7e13be8b474~c5_300x300.webp?x-expires=1667311200&x-signature=85hzY6pJOFV7LHWJBoLVfjcFbk0%3D',
         nameaccount: 'meongu08',
         username: 'Phương Trương (Mèo ngu)'
     }
@@ -72,6 +90,11 @@ function Header() {
     const handleClearValue = () => {
         setSearchValue("")
         inputRef.current.focus()
+    }
+
+    // handle logic
+    const handleMenuChange = (menuItem) => {
+        console.log(menuItem);
     }
 
     return (
@@ -127,9 +150,10 @@ function Header() {
                 </Tippy>
                 <div className={cx('action')}>
                     <Button outline className={cx('custom-button-upload')} leftIcon={<FontAwesomeIcon icon={faPlus} />} >Upload</Button>
-                    <Button primary onClick={() => alert('LOLO')} >Log in</Button>
+                    <Button primary >Log in</Button>
                     <Menu
                         items={MENU_ITEMS}
+                        onChange={handleMenuChange}
                     >
                         <span className={cx('more-btn')}>
                             <FontAwesomeIcon icon={faEllipsisVertical} />

@@ -62,20 +62,15 @@ const MENU_ITEMS = [
 // Danh sach Account
 const dataAccount = [
     {
-        avatar: 'https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/f386fa2b374bf97bc9d6e77d9f5a9ad6~c5_300x300.webp?x-expires=1667311200&x-signature=oYjkusDzURdpbWq8DObZRulB9VQ%3D',
+        avatar: 'https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/f386fa2b374bf97bc9d6e77d9f5a9ad6~c5_100x100.jpeg?x-expires=1667811600&x-signature=KHbCewLYa5XL%2FvJqyALUAoVHka0%3D',
         nameaccount: 'khinaocopothidoiten.174',
         username: 'Duong My Phung'
     },
     {
-        avatar: 'https://p16-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/75a546a64d58998bc3d0367200ce9e2c~c5_300x300.webp?x-expires=1667311200&x-signature=VOqc%2Bo4bxXCHBnJ3VcJghdajHVs%3D',
+        avatar: 'https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/75a546a64d58998bc3d0367200ce9e2c.jpeg?x-expires=1667962800&x-signature=SvxqWAklu3zOsyJoDDhjVSJbE9E%3D',
         nameaccount: 'hyeepham',
         username: 'Hyee Phạm'
     },
-    {
-        avatar: 'https://p16-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/d958c3c3d2fbb2eef593d7e13be8b474~c5_300x300.webp?x-expires=1667311200&x-signature=85hzY6pJOFV7LHWJBoLVfjcFbk0%3D',
-        nameaccount: 'meongu08',
-        username: 'Phương Trương (Mèo ngu)'
-    }
 ]
 
 // Tippy menu khi user da login

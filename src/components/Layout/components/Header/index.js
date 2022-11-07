@@ -6,10 +6,13 @@ import images from '~/assets/images'
 
 // Font Awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark, faSpinner, faMagnifyingGlass, faPlus, faEllipsisVertical, faLanguage, faQuestionCircle, faKeyboard } from '@fortawesome/free-solid-svg-icons';
+import { faCircleXmark, faSpinner, faMagnifyingGlass, faPlus, faEllipsisVertical, faLanguage, faQuestionCircle, faKeyboard, faCloudUpload, faMessage, faShare, faPeopleCarry, faCoins, faGear, faArrowRightLong, faArrowLeftLong, faArrowRightFromBracket, faUser, faVideo } from '@fortawesome/free-solid-svg-icons';
+
 
 // Tippy
-import Tippy from '@tippyjs/react/headless';
+import 'tippy.js/dist/tippy.css';
+import HeadlessTippy from '@tippyjs/react/headless';
+import Tippy from '@tippyjs/react';
 
 
 // from Popper --> Wrapper
@@ -21,7 +24,7 @@ import Menu from '~/components/Popper/Menu/index';
 
 const cx = classNames.bind(styles)
 
-// Cai ni nay
+// Tippy menu luc chua login
 const MENU_ITEMS = [
     {
         icon: <FontAwesomeIcon icon={faLanguage} />,
@@ -56,6 +59,7 @@ const MENU_ITEMS = [
     }
 ]
 
+// Danh sach Account
 const dataAccount = [
     {
         avatar: 'https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/f386fa2b374bf97bc9d6e77d9f5a9ad6~c5_300x300.webp?x-expires=1667311200&x-signature=oYjkusDzURdpbWq8DObZRulB9VQ%3D',
@@ -74,6 +78,37 @@ const dataAccount = [
     }
 ]
 
+// Tippy menu khi user da login
+const userMenu = [
+    {
+        icon: <FontAwesomeIcon icon={faUser} />,
+        title: 'View profile',
+        to: '/@dmp'
+    },
+    {
+        icon: <FontAwesomeIcon icon={faCoins} />,
+        title: 'Get Coins',
+        to: '/coin'
+    },
+    {
+        icon: <FontAwesomeIcon icon={faVideo} />,
+        title: 'LIVE Studio',
+        to: '/live'
+    },
+    {
+        icon: <FontAwesomeIcon icon={faGear} />,
+        title: 'Setting',
+        to: '/setting'
+    },
+    ...MENU_ITEMS,
+    {
+        icon: <FontAwesomeIcon icon={faArrowRightFromBracket} />,
+        title: 'Logout',
+        to: '/logout',
+        separate: true,
+    }
+]
+
 function Header() {
 
     const [searchResult, setSearchResult] = useState([])
@@ -84,6 +119,9 @@ function Header() {
         setSearchValue(e.target.value)
 
     }
+
+    // Trang thai user da dang nhap (true)
+    const currentUser = true
 
     const inputRef = useRef()
 
@@ -105,7 +143,7 @@ function Header() {
                     <img src={images.logo} alt="Logo Tiktok" />
                 </div>
                 {/* Search */}
-                <Tippy
+                <HeadlessTippy
                     visible={searchValue !== ""}
                     interactive={true}
                     render={attrs => (
@@ -147,22 +185,55 @@ function Header() {
                         </button>
 
                     </div>
-                </Tippy>
+                </HeadlessTippy>
+
                 <div className={cx('action')}>
-                    <Button outline className={cx('custom-button-upload')} leftIcon={<FontAwesomeIcon icon={faPlus} />} >Upload</Button>
-                    <Button primary >Log in</Button>
+                    {currentUser ? (
+                        <>
+                            <Tippy content="Upload video" placement='bottom'>
+                                <button className={cx('action-btn')}>
+                                    <FontAwesomeIcon icon={faCloudUpload} />
+                                </button>
+                            </Tippy>
+
+                            <Tippy content="Share" placement='bottom'>
+                                <button className={cx('action-btn')}>
+                                    <FontAwesomeIcon icon={faShare} />
+                                </button>
+                            </Tippy>
+
+                            <Tippy content="Inbox" placement='bottom'>
+                                <button className={cx('action-btn')}>
+                                    <FontAwesomeIcon icon={faMessage} />
+                                </button>
+                            </Tippy>
+                        </>
+                    )
+                        : (
+                            <>
+                                <Button outline className={cx('custom-button-upload')} leftIcon={<FontAwesomeIcon icon={faPlus} />} >Upload</Button>
+                                <Button primary >Log in</Button>
+                            </>
+
+                        )
+                    }
                     <Menu
-                        items={MENU_ITEMS}
+                        items={currentUser ? userMenu : MENU_ITEMS}
                         onChange={handleMenuChange}
                     >
-                        <span className={cx('more-btn')}>
-                            <FontAwesomeIcon icon={faEllipsisVertical} />
-                        </span>
+                        {currentUser ? (
+                            <img className={cx('user-avatar')}
+                                src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/f386fa2b374bf97bc9d6e77d9f5a9ad6~c5_100x100.jpeg?x-expires=1667811600&x-signature=KHbCewLYa5XL%2FvJqyALUAoVHka0%3D"
+                                alt="Hê lô mấy cưng" />
+                        ) : (
+                            <span className={cx('more-btn')}>
+                                <FontAwesomeIcon icon={faEllipsisVertical} />
+                            </span>
+                        )}
                     </Menu>
-
                 </div>
             </div>
-        </header>
+        </header >
     )
 }
 

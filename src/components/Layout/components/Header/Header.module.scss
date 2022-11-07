@@ -106,10 +106,14 @@
     }
 }
 
-.action {
-    
-   
+
+// Actions
+.action{
+    display: flex;
+    align-items: center;
 }
+
+
 
 .more-btn{
     margin-left: 16px;
@@ -117,6 +121,23 @@
     padding: 7px;
     // line-height: 30;
     // background-color: transparent;
+}
+
+.action-btn{
+    color: rgb(22, 24, 35);
+    font-size: 2.2rem;
+    background-color: transparent;   
+    padding: 4px 12px;
+    cursor: pointer;
+}
+
+.user-avatar{
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-left: 10px;
+    cursor: pointer;
 }
 
 .search-title{
@@ -127,5 +148,7 @@
     font-weight: 600;
     color: rgba(22, 24, 35, 0.5);
 }
+
+
 
 

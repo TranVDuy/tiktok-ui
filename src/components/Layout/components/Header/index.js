@@ -21,6 +21,7 @@ import AccountItem from '~/components/AccountItem';
 import SearchValue from '../../SearchValue';
 import Button from '~/components/Button';
 import Menu from '~/components/Popper/Menu/index';
+import { InboxIcon, MagnifyingGlass, MessagesIcon } from '~/components/Icons';
 
 const cx = classNames.bind(styles)
 
@@ -176,7 +177,7 @@ function Header() {
                         </div>
 
                         <button className={cx('search-btn')}>
-                            <FontAwesomeIcon icon={faMagnifyingGlass} />
+                            <MagnifyingGlass/>
                         </button>
 
                     </div>
@@ -185,21 +186,22 @@ function Header() {
                 <div className={cx('action')}>
                     {currentUser ? (
                         <>
-                            <Tippy content="Upload video" placement='bottom'>
-                                <button className={cx('action-btn')}>
-                                    <FontAwesomeIcon icon={faCloudUpload} />
-                                </button>
-                            </Tippy>
+                            <Button 
+                                outline 
+                                className={cx('custom-button-upload')} 
+                                leftIcon={<FontAwesomeIcon icon={faPlus} />} >
+                                Upload
+                            </Button>
 
-                            <Tippy content="Share" placement='bottom'>
+                            <Tippy content="Messages" placement='bottom'>
                                 <button className={cx('action-btn')}>
-                                    <FontAwesomeIcon icon={faShare} />
+                                    <MessagesIcon/>
                                 </button>
                             </Tippy>
 
                             <Tippy content="Inbox" placement='bottom'>
                                 <button className={cx('action-btn')}>
-                                    <FontAwesomeIcon icon={faMessage} />
+                                    <InboxIcon badges={99}/>
                                 </button>
                             </Tippy>
                         </>

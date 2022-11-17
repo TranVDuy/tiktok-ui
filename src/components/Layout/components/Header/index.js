@@ -185,7 +185,7 @@ function Header() {
 
                     </div>
                 </HeadlessTippy>
-
+                {/* End Search */}
                 <div className={cx('action')}>
                     {currentUser ? (
                         <>

@@ -1,5 +1,3 @@
-
-
 export const MessagesIcon = ({ width = '2.6rem', height = '2.6rem', className }) => (
     <svg
         className={className}
@@ -16,7 +14,7 @@ export const MessagesIcon = ({ width = '2.6rem', height = '2.6rem', className })
     </svg>
 )
 
-export const InboxIcon = ({ width = '3.2rem', height = '3.2rem', className, badges }) => (
+export const InboxIcon = ({ width = '3.2rem', height = '3.2rem', className }) => (
     <svg
         className={className}
         width={width}

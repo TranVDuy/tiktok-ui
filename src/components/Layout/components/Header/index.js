@@ -4,9 +4,12 @@ import styles from './Header.module.scss'
 import classNames from 'classnames/bind';
 import images from '~/assets/images'
 
+// Image components
+import Image from '~/components/Image';
+
 // Font Awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark, faSpinner, faMagnifyingGlass, faPlus, faEllipsisVertical, faLanguage, faQuestionCircle, faKeyboard, faCloudUpload, faMessage, faShare, faPeopleCarry, faCoins, faGear, faArrowRightLong, faArrowLeftLong, faArrowRightFromBracket, faUser, faVideo } from '@fortawesome/free-solid-svg-icons';
+import { faCircleXmark, faSpinner, faPlus, faEllipsisVertical, faLanguage, faQuestionCircle, faKeyboard, faCoins, faGear, faArrowRightFromBracket, faUser, faVideo } from '@fortawesome/free-solid-svg-icons';
 
 
 // Tippy
@@ -63,12 +66,12 @@ const MENU_ITEMS = [
 // Danh sach Account
 const dataAccount = [
     {
-        avatar: 'https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/f386fa2b374bf97bc9d6e77d9f5a9ad6~c5_100x100.jpeg?x-expires=1667811600&x-signature=KHbCewLYa5XL%2FvJqyALUAoVHka0%3D',
+        avatar: 'https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/f386fa2b374bf97bc9d6e77d9f5a9ad6~c5_100x100.jpeg?x-expires=1668236400&x-signature=wzmd8dlh2WD37g%2B%2FSQex48b2Sgw%3D',
         nameaccount: 'khinaocopothidoiten.174',
         username: 'Duong My Phung'
     },
     {
-        avatar: 'https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/75a546a64d58998bc3d0367200ce9e2c.jpeg?x-expires=1667962800&x-signature=SvxqWAklu3zOsyJoDDhjVSJbE9E%3D',
+        avatar: 'https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/75a546a64d58998bc3d0367200ce9e2c.jpeg?x-expires=1668236400&x-signature=pyZr98QLthQ92pPszRB1JungWTY%3D',
         nameaccount: 'hyeepham',
         username: 'Hyee Phạm'
     },
@@ -177,7 +180,7 @@ function Header() {
                         </div>
 
                         <button className={cx('search-btn')}>
-                            <MagnifyingGlass/>
+                            <MagnifyingGlass />
                         </button>
 
                     </div>
@@ -186,22 +189,23 @@ function Header() {
                 <div className={cx('action')}>
                     {currentUser ? (
                         <>
-                            <Button 
-                                outline 
-                                className={cx('custom-button-upload')} 
+                            <Button
+                                outline
+                                className={cx('custom-button-upload')}
                                 leftIcon={<FontAwesomeIcon icon={faPlus} />} >
                                 Upload
                             </Button>
 
                             <Tippy content="Messages" placement='bottom'>
                                 <button className={cx('action-btn')}>
-                                    <MessagesIcon/>
+                                    <MessagesIcon />
                                 </button>
                             </Tippy>
 
                             <Tippy content="Inbox" placement='bottom'>
                                 <button className={cx('action-btn')}>
-                                    <InboxIcon badges={99}/>
+                                    <InboxIcon />
+                                    <span className={cx('badge')}>99</span>
                                 </button>
                             </Tippy>
                         </>
@@ -219,9 +223,11 @@ function Header() {
                         onChange={handleMenuChange}
                     >
                         {currentUser ? (
-                            <img className={cx('user-avatar')}
-                                src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/f386fa2b374bf97bc9d6e77d9f5a9ad6~c5_100x100.jpeg?x-expires=1667811600&x-signature=KHbCewLYa5XL%2FvJqyALUAoVHka0%3D"
-                                alt="Hê lô mấy cưng" />
+                            <Image className={cx('user-avatar')}
+                                src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/69845ae3b4eb364d2a2f32fcce68c3e9~c5_100x100.jpeg?x-expires=1668819600&x-signature=SZVlC0EwByVgwjS6%2FXO0b9Ftcas%3D"
+                                alt="Hê lô mấy cưng"
+                                fallback=""
+                            />
                         ) : (
                             <span className={cx('more-btn')}>
                                 <FontAwesomeIcon icon={faEllipsisVertical} />

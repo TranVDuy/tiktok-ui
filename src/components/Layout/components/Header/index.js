@@ -34,6 +34,7 @@ import {
     MessagesIcon 
 } from '~/components/Icons';
 import Search from '../Search';
+import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(styles)
 
@@ -122,7 +123,7 @@ function Header() {
             <div className={cx('inner')}>
                 {/* Logo */}
                 <div className={cx('logo')}>
-                    <img src={images.logo} alt="Logo Tiktok" />
+                    <Link to='/'><img src={images.logo} alt="Logo Tiktok" /></Link>
                 </div>
                 {/* Search */}
                 <Search/>

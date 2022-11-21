@@ -1,0 +1,102 @@
+.search, 
+.search-result{
+    width: 361px;
+}
+
+
+.search {
+    position: relative;
+    position: 5;
+    height: var(--search-height);
+    display: flex;
+    padding-left: 16px;
+    background-color: rgba(22, 24, 35, 0.06);
+    border-radius: var(--search-border-radius);
+    border: 1.5px solid rgba(22, 24, 35, 0.06); 
+
+    input {
+        flex: 1;
+        border: none;
+        background-color: transparent; //trong suoots
+        height: 100%;
+        color: var(--color-placeholder-search-input);
+        font-size: var(--font-size);
+        line-height: 22px;
+        caret-color: rgba(254, 44, 85, 1);
+    }
+
+    input:not(:placeholder-shown) ~ .search-btn {
+        color: rgba(22, 24, 35, 0.75);
+    }
+
+    input:not(:placeholder-shown) ~ .clear{
+        display: block;
+    }
+
+    &:focus-within{
+        border: 1.5px solid rgba(22, 24, 35, .2);
+    }
+
+    &::after {
+        content: '';
+        top: var(--search-top-space);
+        right: 52px;
+        position: absolute;
+        width: 1px;
+        height: calc(var(--search-height) - var(--search-top-space) * 2);
+        background-color: rgba(22, 24, 35, 0.12);
+       
+    }
+}
+
+.clear, 
+.loading {
+    width: 16px;
+    position: absolute;
+    right: 63px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(22, 24, 35, 0.34);
+}
+
+.loading{
+    animation: spiner 1s linear infinite;
+}
+
+@keyframes spiner {
+    from{
+        transform: translateY(-50%) rotate(0);
+    }
+    to{
+        transform: translateY(-50%) rotate(360deg);
+    }
+}
+
+.search-btn {
+    width: 52px;
+    height: 100%;
+    border-top-right-radius: var(--search-border-radius);
+    border-bottom-right-radius: var(--search-border-radius);
+    font-size: 1.8rem;
+    color: rgba(22, 24, 35, 0.34);
+
+    &:hover {
+        background-color: rgba(22, 24, 35, 0.03);
+        cursor: pointer;
+        // color: rgba(22, 24, 35, 0.75);
+    }
+
+    &:active{
+        background-color: rgba(22, 24, 35, .06);
+
+    }
+}
+
+.search-title{
+    height: 30px;
+    padding: 5px 12px;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 600;
+    color: rgba(22, 24, 35, 0.5);
+}
